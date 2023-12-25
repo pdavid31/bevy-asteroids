@@ -3,7 +3,7 @@ mod setup;
 
 use bevy::prelude::*;
 
-use crate::state::GameState;
+use crate::utils::state::GameState;
 
 use actions::{button_system, menu_action};
 use setup::setup;

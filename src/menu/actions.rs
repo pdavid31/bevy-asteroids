@@ -1,6 +1,6 @@
 use bevy::{app::AppExit, prelude::*};
 
-use crate::state::GameState;
+use crate::utils::state::GameState;
 
 pub(super) const NORMAL_BUTTON: Color = Color::rgb(0.15, 0.15, 0.15);
 pub(super) const HOVERED_BUTTON: Color = Color::rgb(0.25, 0.25, 0.25);
