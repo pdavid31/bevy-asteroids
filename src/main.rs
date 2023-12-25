@@ -1,4 +1,3 @@
-mod camera;
 mod menu;
 mod state;
 mod utils;
@@ -6,9 +5,9 @@ mod utils;
 use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 
-use camera::CameraPlugin;
 use menu::MenuPlugin;
 use state::GameStatePlugin;
+use utils::camera::CameraPlugin;
 
 fn main() {
     App::new()
