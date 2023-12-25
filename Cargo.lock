@@ -206,14 +206,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "astroids"
-version = "0.1.0"
-dependencies = [
- "bevy",
- "bevy_rapier2d",
-]
-
-[[package]]
 name = "async-broadcast"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -346,6 +338,14 @@ checksum = "e4bc7e09282a82a48d70ade0c4c1154b0fd7882a735a39c66766a5d0f4718ea9"
 dependencies = [
  "bevy_dylib",
  "bevy_internal",
+]
+
+[[package]]
+name = "bevy-asteroids"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "bevy_rapier2d",
 ]
 
 [[package]]
