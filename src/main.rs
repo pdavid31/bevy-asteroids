@@ -1,9 +1,11 @@
+mod game;
 mod menu;
 mod utils;
 
 use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 
+use game::GamePlugins;
 use menu::MenuPlugin;
 use utils::{camera::CameraPlugin, state::GameStatePlugin};
 
@@ -15,5 +17,6 @@ fn main() {
         .add_plugins(CameraPlugin)
         .add_plugins(GameStatePlugin)
         .add_plugins(MenuPlugin)
+        .add_plugins(GamePlugins)
         .run();
 }
