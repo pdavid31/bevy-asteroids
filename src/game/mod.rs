@@ -4,7 +4,7 @@ mod utils;
 
 use bevy::{app::PluginGroupBuilder, prelude::*};
 
-use self::{background::BackgroundPlugin, utils::DespawnerPlugin};
+use self::{background::BackgroundPlugin, ship::ShipPlugin, utils::DespawnerPlugin};
 
 pub struct GamePlugins;
 
@@ -14,6 +14,7 @@ impl PluginGroup for GamePlugins {
         PluginGroupBuilder::start::<Self>()
             // add plugins to the group
             .add(BackgroundPlugin)
+            .add(ShipPlugin)
             .add(DespawnerPlugin)
     }
 }
