@@ -5,7 +5,7 @@ use crate::utils::TEXT_COLOR;
 use super::actions::{MenuButtonAction, NORMAL_BUTTON};
 
 #[derive(Component)]
-struct OnMenuScreen;
+pub struct OnMenuScreen;
 
 pub(super) fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let button_style = Style {
