@@ -1,4 +1,5 @@
 pub mod camera;
+pub mod despawn;
 pub mod state;
 
 use bevy::prelude::*;
