@@ -4,9 +4,10 @@ use bevy_rapier2d::prelude::*;
 use crate::utils::state::GameState;
 
 const SHIP_LOCATION: Vec3 = Vec3::new(0.0, 0.0, 0.0);
+const SHIP_SIZE: Vec2 = Vec2::new(25.0, 30.0);
 
-const SHIP_ACCELERATION: f32 = 250.0;
-const SHIP_TURN_SPEED: f32 = 0.75;
+const SHIP_ACCELERATION: f32 = 75.0;
+const SHIP_TURN_SPEED: f32 = 0.2;
 
 #[derive(Component)]
 struct Ship;
@@ -17,6 +18,7 @@ struct ShipBundle {
     ship: Ship,
     controller: RigidBody,
     collider: Collider,
+    mass: ColliderMassProperties,
     force: ExternalForce,
     gravity: GravityScale,
     damping: Damping,
@@ -30,7 +32,33 @@ impl ShipBundle {
             transform: TransformBundle::from(Transform::from_translation(location)),
             ship: Ship,
             controller: RigidBody::Dynamic,
-            collider: Collider::cuboid(25.0, 25.0),
+            collider: Collider::compound(vec![
+                (
+                    // collider position
+                    Vec2::new(0.0, 0.0),
+                    // collider rotation
+                    0.0,
+                    // collider shape
+                    Collider::triangle(
+                        SHIP_SIZE * Vec2::new(0.0, 0.5),
+                        SHIP_SIZE * Vec2::new(0.0, -0.3),
+                        SHIP_SIZE * Vec2::new(-0.5, -1.0),
+                    ),
+                ),
+                (
+                    // collider position
+                    Vec2::new(0.0, 0.0),
+                    // collider rotation
+                    0.0,
+                    // collider shape
+                    Collider::triangle(
+                        SHIP_SIZE * Vec2::new(0.0, 0.5),
+                        SHIP_SIZE * Vec2::new(0.0, -0.3),
+                        SHIP_SIZE * Vec2::new(0.5, -1.0),
+                    ),
+                ),
+            ]),
+            mass: ColliderMassProperties::Density(1.0),
             force: ExternalForce::default(),
             gravity: GravityScale(0.0),
             damping: Damping {
