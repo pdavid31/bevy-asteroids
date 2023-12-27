@@ -10,7 +10,7 @@ const SHIP_ACCELERATION: f32 = 75.0;
 const SHIP_TURN_SPEED: f32 = 0.2;
 
 #[derive(Component)]
-struct Ship;
+pub(super) struct Ship;
 
 #[derive(Bundle)]
 struct ShipBundle {
