@@ -97,6 +97,10 @@ fn setup(mut commands: Commands) {
     commands.init_resource::<LaserTriggerConfig>();
 }
 
+fn teardown(mut commands: Commands) {
+    commands.remove_resource::<LaserTriggerConfig>();
+}
+
 pub(super) struct LaserPlugin;
 
 impl Plugin for LaserPlugin {
@@ -105,6 +109,7 @@ impl Plugin for LaserPlugin {
             .add_systems(
                 FixedUpdate,
                 (laser_trigger_system).run_if(in_state(GameState::Game)),
-            );
+            )
+            .add_systems(OnExit(GameState::Game), teardown);
     }
 }
