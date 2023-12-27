@@ -3,6 +3,8 @@ use bevy_rapier2d::prelude::*;
 
 use crate::utils::state::GameState;
 
+use super::utils::OnGameScreen;
+
 const SHIP_LOCATION: Vec3 = Vec3::new(0.0, 0.0, 0.0);
 const SHIP_SIZE: Vec2 = Vec2::new(25.0, 30.0);
 
@@ -24,6 +26,7 @@ struct ShipBundle {
     damping: Damping,
     sleeping: Sleeping,
     ccd: Ccd,
+    on_screen: OnGameScreen,
 }
 
 impl ShipBundle {
@@ -67,6 +70,7 @@ impl ShipBundle {
             },
             sleeping: Sleeping::disabled(),
             ccd: Ccd::enabled(),
+            on_screen: OnGameScreen,
         }
     }
 }

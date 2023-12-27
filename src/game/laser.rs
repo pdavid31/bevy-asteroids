@@ -5,7 +5,7 @@ use bevy_rapier2d::prelude::*;
 
 use crate::utils::state::GameState;
 
-use super::ship::Ship;
+use super::{ship::Ship, utils::OnGameScreen};
 
 const LASER_SPEED: f32 = 1000.0;
 // laser firing frequency in hertz
@@ -22,6 +22,7 @@ struct LaserBundle {
     collider: Collider,
     sensor: Sensor,
     velocity: Velocity,
+    on_screen: OnGameScreen,
 }
 
 impl LaserBundle {
@@ -43,6 +44,7 @@ impl LaserBundle {
                 linvel: velocity,
                 angvel: 0.0,
             },
+            on_screen: OnGameScreen,
         }
     }
 }
