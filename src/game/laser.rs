@@ -12,7 +12,7 @@ const LASER_SPEED: f32 = 1000.0;
 const LASER_FREQUENCY: f32 = 10.0;
 
 #[derive(Component)]
-struct Laser;
+pub(super) struct Laser;
 
 #[derive(Bundle)]
 struct LaserBundle {

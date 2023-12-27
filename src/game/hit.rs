@@ -1,19 +1,21 @@
 use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 
+use super::laser::Laser;
 use crate::utils::state::GameState;
 
-fn hit_registration_system(mut collision_events: EventReader<CollisionEvent>) {
+fn hit_registration_system(world: &World, mut collision_events: EventReader<CollisionEvent>) {
     for collision_event in collision_events.read() {
-        let (entity1, entity2, flags) = match collision_event {
-            CollisionEvent::Started(e1, e2, flags) => (e1, e2, flags),
-            CollisionEvent::Stopped(e1, e2, flags) => (e1, e2, flags),
-        };
+        match collision_event {
+            CollisionEvent::Started(e1, e2, _) => {
+                let is_e1_laser = world.entity(*e1).contains::<Laser>();
 
-        println!(
-            "entity 1: {:?}, entity 2: {:?}, flags: {:?}",
-            entity1, entity2, flags
-        );
+                let is_e2_laser = world.entity(*e2).contains::<Laser>();
+
+                println!("e1 is laser: {}, e2 is laser: {}", is_e1_laser, is_e2_laser);
+            }
+            CollisionEvent::Stopped(e1, e2, _) => {}
+        };
     }
 }
 
